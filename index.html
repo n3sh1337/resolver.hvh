@@ -15,6 +15,8 @@
             --dark-bg: #0a101c;
             --dark-bg-lighter: #131c30;
             --text-color: #e6e8eb;
+            --vip-color: #f4c430;
+            --admin-color: #e94560;
         }
         
         * {
@@ -181,19 +183,212 @@
             animation: pulse 2s infinite;
         }
         
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
+        /* Стили для раздела привилегий */
+        .privileges-section {
+            margin-top: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--vip-color), var(--admin-color));
+            border-radius: 3px;
+        }
+        
+        .section-description {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .privileges-container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .privilege-card {
+            background: rgba(10, 16, 28, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(8px);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .privilege-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+        
+        .vip-card::before {
+            background: linear-gradient(90deg, transparent, var(--vip-color), transparent);
+        }
+        
+        .admin-card::before {
+            background: linear-gradient(90deg, transparent, var(--admin-color), transparent);
+        }
+        
+        .privilege-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+        }
+        
+        .privilege-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .privilege-badge {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        
+        .privilege-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .vip-card .privilege-title {
+            color: var(--vip-color);
+        }
+        
+        .admin-card .privilege-title {
+            color: var(--admin-color);
+        }
+        
+        .privilege-description {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .privilege-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .feature-icon {
+            font-size: 1.2rem;
+        }
+        
+        .privilege-pricing, .privilege-payment, .privilege-buy {
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pricing-title, .payment-title, .buy-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-duration {
+            font-weight: 500;
+        }
+        
+        .price-value {
+            font-weight: 600;
+        }
+        
+        .vip-card .price-value {
+            color: var(--vip-color);
+        }
+        
+        .admin-card .price-value {
+            color: var(--admin-color);
+        }
+        
+        .payment-methods {
+            font-size: 0.95rem;
+        }
+        
+        .buy-instructions {
+            font-size: 0.95rem;
+        }
+        
+        .btn-privilege {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .vip-btn {
+            background: linear-gradient(45deg, #f4c430, #e7a800);
+            color: #0a101c;
+            border: none;
+        }
+        
+        .vip-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(244, 196, 48, 0.4);
+        }
+        
+        .admin-btn {
+            background: linear-gradient(45deg, #e94560, #c81d3e);
+            color: white;
+            border: none;
+        }
+        
+        .admin-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(233, 69, 96, 0.4);
+        }
+        
+        @media (max-width: 992px) {
+            .privilege-features {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -280,6 +475,90 @@
                     <div class="detail-card">
                         <div class="detail-title">Starting Money</div>
                         <div class="detail-value">$16,000</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Привилегии -->
+            <div class="privileges-section">
+                <h2 class="section-title">Premium Privileges</h2>
+                <p class="section-description">Unlock exclusive features and dominate the server with style!</p>
+                
+                <div class="privileges-container">
+                    <!-- VIP Pack -->
+                    <div class="privilege-card vip-card">
+                        <div class="privilege-header">
+                            <div class="privilege-badge">💎</div>
+                            <h3 class="privilege-title">VIP Access</h3>
+                        </div>
+                        <p class="privilege-description">Unlock premium features and dominate with style!</p>
+                        
+                        <div class="privilege-features">
+                            <div class="feature-item"><span class="feature-icon">💀</span> Kill Effect</div>
+                            <div class="feature-item"><span class="feature-icon">⚡</span> Respawn Effect</div>
+                            <div class="feature-item"><span class="feature-icon">🎯</span> Hitmarker</div>
+                            <div class="feature-item"><span class="feature-icon">💨</span> Grenade Trails</div>
+                            <div class="feature-item"><span class="feature-icon">🎨</span> Custom Trail Color</div>
+                            <div class="feature-item"><span class="feature-icon">🌈</span> Neon Glow</div>
+                            <div class="feature-item"><span class="feature-icon">🎨</span> Neon Color</div>
+                            <div class="feature-item"><span class="feature-icon">🪙</span> VIP Coins</div>
+                            <div class="feature-item"><span class="feature-icon">🛡️</span> No Self-Damage</div>
+                            <div class="feature-item"><span class="feature-icon">❤️</span> Health Shot</div>
+                        </div>
+                        
+                        <div class="privilege-pricing">
+                            <h4 class="pricing-title">🗓️ VIP Pricing</h4>
+                            <div class="price-item"><span class="price-duration">7 Days</span> <span class="price-value">€1.99 / ₽80</span></div>
+                            <div class="price-item"><span class="price-duration">14 Days</span> <span class="price-value">€3.49 / ₽140</span></div>
+                            <div class="price-item"><span class="price-duration">30 Days</span> <span class="price-value">€5.99 / ₽240</span></div>
+                        </div>
+                        
+                        <div class="privilege-payment">
+                            <h4 class="payment-title">💰 Payment Methods</h4>
+                            <p class="payment-methods">PayPal • 💳 Card • ₿ Crypto • ❄️CS2 Skins</p>
+                        </div>
+                        
+                        <div class="privilege-buy">
+                            <h4 class="buy-title">🏷️ How to Buy</h4>
+                            <p class="buy-instructions">DM staff or open a ticket in #create-ticket</p>
+                        </div>
+                        
+                        <a href="https://discord.gg/5kwcXmvvyc" class="btn btn-privilege vip-btn">Get VIP Now</a>
+                    </div>
+                    
+                    <!-- Admin Pack -->
+                    <div class="privilege-card admin-card">
+                        <div class="privilege-header">
+                            <div class="privilege-badge">👑</div>
+                            <h3 class="privilege-title">Admin Access</h3>
+                        </div>
+                        <p class="privilege-description">Become a part of the elite. Full access, full control.</p>
+                        
+                        <div class="privilege-features">
+                            <div class="feature-item"><span class="feature-icon">✅</span> All VIP perks</div>
+                            <div class="feature-item"><span class="feature-icon">🛠️</span> Admin Panel Functions</div>
+                            <div class="feature-item"><span class="feature-icon">🛡️</span> Armor Regeneration</div>
+                            <div class="feature-item"><span class="feature-icon">❤️</span> Health Regeneration</div>
+                        </div>
+                        
+                        <div class="privilege-pricing">
+                            <h4 class="pricing-title">🗓️ Admin Pricing</h4>
+                            <div class="price-item"><span class="price-duration">7 Days</span> <span class="price-value">€3.99 / ₽160</span></div>
+                            <div class="price-item"><span class="price-duration">14 Days</span> <span class="price-value">€6.99 / ₽280</span></div>
+                            <div class="price-item"><span class="price-duration">30 Days</span> <span class="price-value">€11.99 / ₽480</span></div>
+                        </div>
+                        
+                        <div class="privilege-payment">
+                            <h4 class="payment-title">💰 Payment Methods</h4>
+                            <p class="payment-methods">PayPal • 💳 Card • ₿ Crypto • ❄️CS2 Skins</p>
+                        </div>
+                        
+                        <div class="privilege-buy">
+                            <h4 class="buy-title">🏷️ How to Buy</h4>
+                            <p class="buy-instructions">DM staff or open a ticket in #create-ticket</p>
+                        </div>
+                        
+                        <a href="https://discord.gg/5kwcXmvvyc" class="btn btn-privilege admin-btn">Get Admin Now</a>
                     </div>
                 </div>
             </div>
