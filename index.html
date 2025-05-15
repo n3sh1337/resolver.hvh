@@ -6,7 +6,7 @@
     <title>☂️ resolver.hvh | EU/UA | Only mirage | $16K</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #4361ee;
@@ -14,11 +14,9 @@
             --accent-color: #4cc9f0;
             --dark-bg: #0a101c;
             --dark-bg-lighter: #131c30;
-            --card-bg: rgba(19, 28, 48, 0.7);
             --text-color: #e6e8eb;
             --vip-color: #f4c430;
             --admin-color: #e94560;
-            --glow-color: rgba(76, 201, 240, 0.6);
         }
         
         * {
@@ -28,177 +26,57 @@
         }
         
         body {
-            font-family: 'Outfit', sans-serif;
-            background: radial-gradient(circle at top right, #141e37 0%, #0a101c 70%);
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-lighter) 100%);
             color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-attachment: fixed;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 600px;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ3JhZGllbnQiIGN4PSI1MCUiIGN5PSIwJSIgcj0iNTAlIiBmeD0iNTAlIiBmeT0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNGNjOWYwO3N0b3Atb3BhY2l0eTowLjIiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzBhMTAxYztzdG9wLW9wYWNpdHk6MCIgLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZGllbnQpIiAvPgo8L3N2Zz4=') no-repeat top center;
-            background-size: cover;
-            opacity: 0.8;
-            z-index: -1;
-        }
-        
-        .grid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(19, 28, 48, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(19, 28, 48, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            z-index: -2;
         }
         
         .container {
             width: 100%;
-            max-width: 1280px;
-            padding: 0 1.5rem;
+            max-width: 1200px;
+            padding: 2rem;
             margin: 0 auto;
-            position: relative;
         }
         
         header {
             text-align: center;
-            padding: 2.5rem 1rem 1.5rem;
-            position: relative;
-            margin-bottom: 3rem;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .logo-container {
-            display: inline-block;
-            position: relative;
-            margin-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            width: 100%;
         }
         
         .logo {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--text-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
             margin-bottom: 0.5rem;
-            text-transform: lowercase;
-            letter-spacing: -1px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .logo span {
-            background: linear-gradient(135deg, #4cc9f0, #3a0ca3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
-        
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-            border-radius: 3px;
-        }
-        
-        .logo-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120%;
-            height: 120%;
-            background: radial-gradient(circle, var(--glow-color) 0%, rgba(76, 201, 240, 0) 70%);
-            z-index: -1;
-            filter: blur(20px);
+            text-shadow: 0 0 10px rgba(76, 201, 240, 0.3);
         }
         
         .tagline {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-color);
-            opacity: 0.9;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 4px;
+            opacity: 0.8;
         }
         
         .server-info {
-            background: rgba(10, 16, 28, 0.6);
-            border-radius: 24px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(67, 97, 238, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .server-info::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJkb3RzIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPgogICAgICA8Y2lyY2xlIGN4PSIzIiBjeT0iMyIgcj0iMC44IiBmaWxsPSJyZ2JhKDc2LCAyMDEsIDI0MCwgMC4xKSIgLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNkb3RzKSIgLz4KPC9zdmc+');
-            opacity: 0.3;
-            z-index: -1;
+            background: rgba(10, 16, 28, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(67, 97, 238, 0.2);
         }
         
         .widget-container {
-            margin-bottom: 2.5rem;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .glow-border {
-            position: relative;
-        }
-        
-        .glow-border::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--primary-color));
-            z-index: -1;
-            border-radius: 18px;
-            filter: blur(10px);
-            opacity: 0.6;
-            animation: borderGlow 6s infinite linear;
-        }
-        
-        @keyframes borderGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            margin-bottom: 2rem;
         }
         
         .buttons {
@@ -206,165 +84,95 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.9rem 2rem;
-            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.3s ease;
             text-decoration: none;
-            gap: 0.8rem;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(-100%);
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-            z-index: -1;
-        }
-        
-        .btn:hover::before {
-            transform: translateX(0);
+            gap: 0.5rem;
         }
         
         .btn-primary {
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             color: white;
             border: none;
-            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.3);
+            box-shadow: 0 4px 20px rgba(67, 97, 238, 0.3);
         }
         
         .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(67, 97, 238, 0.5);
         }
         
         .btn-discord {
             background: #5865F2;
             color: white;
             border: none;
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.3);
+            box-shadow: 0 4px 20px rgba(88, 101, 242, 0.3);
         }
         
         .btn-discord:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(88, 101, 242, 0.5);
         }
         
         .server-details {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 2.5rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
         .detail-card {
             flex: 1;
             min-width: 200px;
-            background: var(--card-bg);
-            padding: 1.8rem;
-            border-radius: 16px;
+            background: rgba(19, 28, 48, 0.6);
+            padding: 1.5rem;
+            border-radius: 10px;
             text-align: center;
-            border: 1px solid rgba(76, 201, 240, 0.12);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
-        }
-        
-        .detail-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border-color: rgba(76, 201, 240, 0.3);
-        }
-        
-        .detail-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(76, 201, 240, 0.08) 0%, rgba(76, 201, 240, 0) 70%);
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            z-index: -1;
-        }
-        
-        .detail-card:hover::after {
-            opacity: 1;
+            border: 1px solid rgba(76, 201, 240, 0.1);
         }
         
         .detail-title {
             font-size: 0.9rem;
             text-transform: uppercase;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             color: var(--accent-color);
-            letter-spacing: 2px;
-            font-weight: 500;
         }
         
         .detail-value {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        
-        .detail-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-            opacity: 0.8;
         }
         
         footer {
             margin-top: auto;
             width: 100%;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-color);
             opacity: 0.7;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
         }
         
         /* Анимации */
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.6);
+                box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.4);
             }
             70% {
-                box-shadow: 0 0 0 15px rgba(76, 201, 240, 0);
+                box-shadow: 0 0 0 10px rgba(76, 201, 240, 0);
             }
             100% {
                 box-shadow: 0 0 0 0 rgba(76, 201, 240, 0);
@@ -372,29 +180,24 @@
         }
         
         .pulse {
-            animation: pulse 2.5s infinite;
+            animation: pulse 2s infinite;
         }
         
         /* Стили для раздела привилегий */
         .privileges-section {
-            margin-top: 4rem;
+            margin-top: 3rem;
             padding: 2rem 0;
-            position: relative;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
         }
         
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
             color: var(--text-color);
             position: relative;
             display: inline-block;
-            font-weight: 700;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .section-title::after {
@@ -403,43 +206,37 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(90deg, var(--vip-color), var(--admin-color));
             border-radius: 3px;
         }
         
         .section-description {
-            max-width: 600px;
-            margin: 0 auto;
-            margin-top: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
             color: var(--text-color);
             opacity: 0.8;
-            font-size: 1.1rem;
-            line-height: 1.7;
         }
         
         .privileges-container {
             display: flex;
-            gap: 3rem;
+            gap: 2rem;
             flex-wrap: wrap;
             justify-content: center;
-            perspective: 1000px;
         }
         
         .privilege-card {
-            background: rgba(10, 16, 28, 0.85);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(12px);
+            background: rgba(10, 16, 28, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(8px);
             width: 100%;
             max-width: 450px;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.3s ease;
             overflow: hidden;
-            transform-style: preserve-3d;
-            z-index: 1;
         }
         
         .privilege-card::before {
@@ -448,22 +245,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 6px;
+            height: 5px;
             background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-            opacity: 0.7;
-            z-index: 2;
-        }
-        
-        .privilege-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJkb3RzMiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPGNpcmNsZSBjeD0iMyIgY3k9IjMiIHI9IjAuOCIgZmlsbD0icmdiYSg3NiwgMjAxLCAyNDAsIDAuMDUpIiAvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2RvdHMyKSIgLz4KPC9zdmc+');
-            z-index: -1;
-            opacity: 0.5;
         }
         
         .vip-card::before {
@@ -475,176 +258,76 @@
         }
         
         .privilege-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-        
-        .privilege-badge-container {
-            position: absolute;
-            top: -25px;
-            right: 30px;
-            width: 65px;
-            height: 65px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--dark-bg);
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            z-index: 3;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
         }
         
         .privilege-header {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            position: relative;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
         
         .privilege-badge {
-            font-size: 2.2rem;
+            font-size: 2rem;
             line-height: 1;
         }
         
         .privilege-title {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin: 0;
-            letter-spacing: -0.5px;
-            line-height: 1.1;
         }
         
         .vip-card .privilege-title {
-            background: linear-gradient(135deg, var(--vip-color), #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--vip-color);
         }
         
         .admin-card .privilege-title {
-            background: linear-gradient(135deg, var(--admin-color), #c81d3e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--admin-color);
         }
         
         .privilege-description {
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
             opacity: 0.9;
-            line-height: 1.7;
         }
         
         .privilege-features {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding: 1.2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
         }
         
         .feature-item {
             display: flex;
             align-items: center;
-            gap: 0.7rem;
-            font-size: 1rem;
-            padding: 0.5rem 0;
-            transition: all 0.2s ease;
-        }
-        
-        .feature-item:hover {
-            transform: translateX(5px);
+            gap: 0.5rem;
+            font-size: 0.95rem;
         }
         
         .feature-icon {
             font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            background: rgba(76, 201, 240, 0.1);
-            border-radius: 50%;
-            flex-shrink: 0;
         }
         
-        .vip-card .feature-icon {
-            background: rgba(244, 196, 48, 0.1);
+        .privilege-pricing, .privilege-payment, .privilege-buy {
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .admin-card .feature-icon {
-            background: rgba(233, 69, 96, 0.1);
-        }
-        
-        .pricing-section {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 14px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .section-subtitle {
-            font-size: 1.15rem;
-            margin-bottom: 1.2rem;
+        .pricing-title, .payment-title, .buy-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
             color: var(--accent-color);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            position: relative;
-            padding-left: 1.5rem;
-            display: inline-block;
-        }
-        
-        .section-subtitle::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            background: var(--accent-color);
-            border-radius: 50%;
-        }
-        
-        .vip-card .section-subtitle {
-            color: var(--vip-color);
-        }
-        
-        .vip-card .section-subtitle::before {
-            background: var(--vip-color);
-        }
-        
-        .admin-card .section-subtitle {
-            color: var(--admin-color);
-        }
-        
-        .admin-card .section-subtitle::before {
-            background: var(--admin-color);
-        }
-        
-        .price-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.8rem;
         }
         
         .price-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-        
-        .price-item:hover {
-            background: rgba(255, 255, 255, 0.06);
+            margin-bottom: 0.5rem;
         }
         
         .price-duration {
@@ -652,8 +335,7 @@
         }
         
         .price-value {
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 600;
         }
         
         .vip-card .price-value {
@@ -664,110 +346,257 @@
             color: var(--admin-color);
         }
         
-        .privilege-payment, .privilege-buy {
-            margin-bottom: 2rem;
-        }
-        
-        .method-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-        
-        .method-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.2s ease;
-        }
-        
-        .method-badge:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+        .payment-methods {
+            font-size: 0.95rem;
         }
         
         .buy-instructions {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.2rem;
-            margin-top: 1rem;
-            border-left: 3px solid var(--accent-color);
             font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        .vip-card .buy-instructions {
-            border-left-color: var(--vip-color);
-        }
-        
-        .admin-card .buy-instructions {
-            border-left-color: var(--admin-color);
         }
         
         .btn-privilege {
             width: 100%;
-            padding: 1.2rem;
+            padding: 1rem;
             margin-top: 1rem;
             text-align: center;
             font-weight: 700;
             letter-spacing: 1px;
-            font-size: 1.1rem;
             text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
         }
         
         .vip-btn {
             background: linear-gradient(45deg, #f4c430, #e7a800);
             color: #0a101c;
             border: none;
-            box-shadow: 0 8px 25px rgba(244, 196, 48, 0.3);
         }
         
         .vip-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(244, 196, 48, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(244, 196, 48, 0.4);
         }
         
         .admin-btn {
             background: linear-gradient(45deg, #e94560, #c81d3e);
             color: white;
             border: none;
-            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.3);
         }
         
         .admin-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(233, 69, 96, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(233, 69, 96, 0.4);
         }
         
-        /* Features section */
-        .features-section {
-            margin: 5rem 0;
+        @media (max-width: 992px) {
+            .privilege-features {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        /* Классы для значков */
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
         }
         
-        .feature-box {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(76, 201, 240, 0.1);
-            height: 100%;
+        /* Toast для уведомления о копировании */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: rgba(67, 97, 238, 0.9);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 1000;
         }
         
-        .feature-box:hover {
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">☂️ resolver.hvh</div>
+            <div class="tagline">EU/UA | Only mirage | $16K</div>
+        </header>
+        
+        <main>
+            <div class="server-info">
+                <div class="widget-container">
+                    <!-- TSARVAR WIDGET -->
+                    <a href="https://tsarvar.com/@resolver" data-tsarvarServerId="482989">Сервер ☂️ resolver.hvh | EU/UA | Only mirage | $16K</a>
+                    <script type="text/javascript" charset="utf-8" src="https://widget.tsarvar.com/load.js?v=2"></script>
+                    <script type="text/javascript">
+                        (function(k){(window[k]||(window[k]=[])).push({
+                            element:'*[data-tsarvarServerId="482989"]',
+                            serverId:482989,
+                            serverIp:'92.62.251.128',
+                            serverPort:27015,
+                            blackMode:true
+                        });})('TsarvarWidgetQueue');
+                    </script>
+                    <!-- /TSARVAR WIDGET -->
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn btn-primary pulse" onclick="copyIP()">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        COPY IP & CONNECT
+                    </button>
+                    
+                    <a href="https://discord.gg/5kwcXmvvyc" target="_blank" class="btn btn-discord">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.39-.444.885-.608 1.278a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.278.077.077 0 0 0-.079-.036 19.528 19.528 0 0 0-4.885 1.49.069.069 0 0 0-.032.027C.533 10.071-.32 15.4.099 20.669a.082.082 0 0 0 .031.057 19.798 19.798 0 0 0 5.943 2.98.081.081 0 0 0 .088-.028c.485-.661.919-1.36 1.288-2.096a.075.075 0 0 0-.041-.106 13.109 13.109 0 0 1-1.853-.883.076.076 0 0 1-.007-.127c.126-.093.252-.19.372-.287a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.195.373.288a.076.076 0 0 1-.006.127 12.239 12.239 0 0 1-1.853.883.077.077 0 0 0-.041.107c.375.736.81 1.436 1.288 2.095a.077.077 0 0 0 .088.028 19.734 19.734 0 0 0 5.949-2.98.082.082 0 0 0 .032-.057c.5-5.177-.838-10.460-3.549-14.912a.062.062 0 0 0-.031-.028zM8.02 17.278c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"></path>
+                        </svg>
+                        JOIN DISCORD
+                    </a>
+                </div>
+                
+                <div class="server-details">
+                    <div class="detail-card">
+                        <div class="detail-title">Server IP</div>
+                        <div class="detail-value">92.62.251.128:27015</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-title">Map</div>
+                        <div class="detail-value">de_mirage</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-title">Starting Money</div>
+                        <div class="detail-value">$16,000</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Привилегии -->
+            <div class="privileges-section">
+                <h2 class="section-title">Premium Privileges</h2>
+                <p class="section-description">Unlock exclusive features and dominate the server with style!</p>
+                
+                <div class="privileges-container">
+                    <!-- VIP Pack -->
+                    <div class="privilege-card vip-card">
+                        <div class="privilege-header">
+                            <div class="privilege-badge">💎</div>
+                            <h3 class="privilege-title">VIP Access</h3>
+                        </div>
+                        <p class="privilege-description">Unlock premium features and dominate with style!</p>
+                        
+                        <div class="privilege-features">
+                            <div class="feature-item"><span class="feature-icon">💀</span> Kill Effect</div>
+                            <div class="feature-item"><span class="feature-icon">⚡</span> Respawn Effect</div>
+                            <div class="feature-item"><span class="feature-icon">🎯</span> Hitmarker</div>
+                            <div class="feature-item"><span class="feature-icon">💨</span> Grenade Trails</div>
+                            <div class="feature-item"><span class="feature-icon">🎨</span> Custom Trail Color</div>
+                            <div class="feature-item"><span class="feature-icon">🌈</span> Neon Glow</div>
+                            <div class="feature-item"><span class="feature-icon">🎨</span> Neon Color</div>
+                            <div class="feature-item"><span class="feature-icon">🪙</span> VIP Coins</div>
+                            <div class="feature-item"><span class="feature-icon">🛡️</span> No Self-Damage</div>
+                            <div class="feature-item"><span class="feature-icon">❤️</span> Health Shot</div>
+                        </div>
+                        
+                        <div class="privilege-pricing">
+                            <h4 class="pricing-title">🗓️ VIP Pricing</h4>
+                            <div class="price-item"><span class="price-duration">7 Days</span> <span class="price-value">€1.99 / ₽80</span></div>
+                            <div class="price-item"><span class="price-duration">14 Days</span> <span class="price-value">€3.49 / ₽140</span></div>
+                            <div class="price-item"><span class="price-duration">30 Days</span> <span class="price-value">€5.99 / ₽240</span></div>
+                        </div>
+                        
+                        <div class="privilege-payment">
+                            <h4 class="payment-title">💰 Payment Methods</h4>
+                            <p class="payment-methods">PayPal • 💳 Card • ₿ Crypto • ❄️CS2 Skins</p>
+                        </div>
+                        
+                        <div class="privilege-buy">
+                            <h4 class="buy-title">🏷️ How to Buy</h4>
+                            <p class="buy-instructions">DM staff or open a ticket in #create-ticket</p>
+                        </div>
+                        
+                        <a href="https://discord.gg/5kwcXmvvyc" class="btn btn-privilege vip-btn">Get VIP Now</a>
+                    </div>
+                    
+                    <!-- Admin Pack -->
+                    <div class="privilege-card admin-card">
+                        <div class="privilege-header">
+                            <div class="privilege-badge">👑</div>
+                            <h3 class="privilege-title">Admin Access</h3>
+                        </div>
+                        <p class="privilege-description">Become a part of the elite. Full access, full control.</p>
+                        
+                        <div class="privilege-features">
+                            <div class="feature-item"><span class="feature-icon">✅</span> All VIP perks</div>
+                            <div class="feature-item"><span class="feature-icon">🛠️</span> Admin Panel Functions</div>
+                            <div class="feature-item"><span class="feature-icon">🛡️</span> Armor Regeneration</div>
+                            <div class="feature-item"><span class="feature-icon">❤️</span> Health Regeneration</div>
+                        </div>
+                        
+                        <div class="privilege-pricing">
+                            <h4 class="pricing-title">🗓️ Admin Pricing</h4>
+                            <div class="price-item"><span class="price-duration">7 Days</span> <span class="price-value">€3.99 / ₽160</span></div>
+                            <div class="price-item"><span class="price-duration">14 Days</span> <span class="price-value">€6.99 / ₽280</span></div>
+                            <div class="price-item"><span class="price-duration">30 Days</span> <span class="price-value">€11.99 / ₽480</span></div>
+                        </div>
+                        
+                        <div class="privilege-payment">
+                            <h4 class="payment-title">💰 Payment Methods</h4>
+                            <p class="payment-methods">PayPal • 💳 Card • ₿ Crypto • ❄️CS2 Skins</p>
+                        </div>
+                        
+                        <div class="privilege-buy">
+                            <h4 class="buy-title">🏷️ How to Buy</h4>
+                            <p class="buy-instructions">DM staff or open a ticket in #create-ticket</p>
+                        </div>
+                        
+                        <a href="https://discord.gg/5kwcXmvvyc" class="btn btn-privilege admin-btn">Get Admin Now</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            &copy; 2025 ☂️ resolver.hvh | All rights reserved
+        </footer>
+    </div>
+    
+    <div class="toast" id="toast">IP copied to clipboard!</div>
+    
+    <script>
+        function copyIP() {
+            // IP сервера
+            const serverIP = '92.62.251.128:27015';
+            
+            // Копируем IP в буфер обмена
+            navigator.clipboard.writeText(serverIP).then(function() {
+                // Показываем уведомление
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                
+                // Скрываем уведомление через 3 секунды
+                setTimeout(function() {
+                    toast.classList.remove('show');
+                }, 3000);
+                
+                // Пытаемся открыть CS2 с подключением к серверу
+                try {
+                    window.location.href = `steam://connect/${serverIP}`;
+                } catch (e) {
+                    console.error('Failed to open Steam:', e);
+                }
+            }).catch(function(err) {
+                console.error('Failed to copy IP: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
