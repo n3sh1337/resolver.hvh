@@ -1,173 +1,323 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Resolver HVH Server</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+    <title>☂️ resolver.hvh | EU/UA | Only mirage | $16K</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --dark-bg: #0a101c;
+            --dark-bg-lighter: #131c30;
+            --text-color: #e6e8eb;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
-            background: linear-gradient(135deg, #1f1c2c, #928dab);
-            font-family: 'Roboto', sans-serif;
-            color: #fff;
-            text-align: center;
-            padding: 50px 20px;
-            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-lighter) 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3em;
-            margin-bottom: 10px;
-            animation: fadeInDown 1s ease-out;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-        h1:hover {
-            color: #ffd700;
-            transform: scale(1.05) rotate(-1deg);
-        }
-        p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            color: #e0e0e0;
-        }
-        .btn {
-            background-color: #ffc107;
-            color: #000;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            margin: 10px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .btn:hover {
-            background-color: #e0a800;
-            transform: scale(1.08) rotate(1deg);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        .widget {
-            margin-top: 50px;
-            animation: fadeInUp 1s ease-out;
-        }
-        #particles-js {
-            position: fixed;
+        
+        .container {
             width: 100%;
-            height: 100%;
-            z-index: -1;
-            top: 0;
-            left: 0;
+            max-width: 1200px;
+            padding: 2rem;
+            margin: 0 auto;
         }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-40px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            width: 100%;
         }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(76, 201, 240, 0.3);
         }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2em; }
-            .btn { font-size: 1em; padding: 12px 20px; }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .server-info {
+            background: rgba(10, 16, 28, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(67, 97, 238, 0.2);
+        }
+        
+        .widget-container {
+            margin-bottom: 2rem;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            box-shadow: 0 4px 20px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(67, 97, 238, 0.5);
+        }
+        
+        .btn-discord {
+            background: #5865F2;
+            color: white;
+            border: none;
+            box-shadow: 0 4px 20px rgba(88, 101, 242, 0.3);
+        }
+        
+        .btn-discord:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(88, 101, 242, 0.5);
+        }
+        
+        .server-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .detail-card {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(19, 28, 48, 0.6);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(76, 201, 240, 0.1);
+        }
+        
+        .detail-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        .detail-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        footer {
+            margin-top: auto;
+            width: 100%;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(76, 201, 240, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(76, 201, 240, 0);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        /* Классы для значков */
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        /* Toast для уведомления о копировании */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: rgba(67, 97, 238, 0.9);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-
-    <h1>🌐 Resolver HVH Server</h1>
-    <p>EU/UA | Only Mirage | $16K</p>
-
-    <a class="btn" href="steam://connect/92.62.251.128:27015">Connect to Server</a>
-    <a class="btn" href="https://discord.gg/5kwcXmvvyc" target="_blank">Buy VIP / Admin</a>
-    <button class="btn" onclick="copyIP()">Copy IP</button>
-
-    <div class="widget">
-        <!-- TSARVAR WIDGET -->
-        <<a href="https://tsarvar.com/@resolver" data-tsarvarServerId="482989">Сервер ☂️ resolver.hvh | EU/UA | Only mirage | $16K</a>
-<script type="text/javascript" charset="utf-8" src="https://widget.tsarvar.com/load.js?v=2"></script>
-<script type="text/javascript">
-    (function(k){(window[k]||(window[k]=[])).push({
-        element:'*[data-tsarvarServerId="482989"]',
-        serverId:482989,
-        serverIp:'92.62.251.128',
-        serverPort:27015,
-        blackMode:true
-    });})('TsarvarWidgetQueue');
-</script>
-<!-- /TSARVAR WIDGET -->
-        <!-- /TSARVAR WIDGET -->
+    <div class="container">
+        <header>
+            <div class="logo">☂️ resolver.hvh</div>
+            <div class="tagline">EU/UA | Only mirage | $16K</div>
+        </header>
+        
+        <main>
+            <div class="server-info">
+                <div class="widget-container">
+                    <!-- TSARVAR WIDGET -->
+                    <a href="https://tsarvar.com/@resolver" data-tsarvarServerId="482989">Сервер ☂️ resolver.hvh | EU/UA | Only mirage | $16K</a>
+                    <script type="text/javascript" charset="utf-8" src="https://widget.tsarvar.com/load.js?v=2"></script>
+                    <script type="text/javascript">
+                        (function(k){(window[k]||(window[k]=[])).push({
+                            element:'*[data-tsarvarServerId="482989"]',
+                            serverId:482989,
+                            serverIp:'92.62.251.128',
+                            serverPort:27015,
+                            blackMode:true
+                        });})('TsarvarWidgetQueue');
+                    </script>
+                    <!-- /TSARVAR WIDGET -->
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn btn-primary pulse" onclick="copyIP()">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        COPY IP & CONNECT
+                    </button>
+                    
+                    <a href="https://discord.gg/5kwcXmvvyc" target="_blank" class="btn btn-discord">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.39-.444.885-.608 1.278a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.278.077.077 0 0 0-.079-.036 19.528 19.528 0 0 0-4.885 1.49.069.069 0 0 0-.032.027C.533 10.071-.32 15.4.099 20.669a.082.082 0 0 0 .031.057 19.798 19.798 0 0 0 5.943 2.98.081.081 0 0 0 .088-.028c.485-.661.919-1.36 1.288-2.096a.075.075 0 0 0-.041-.106 13.109 13.109 0 0 1-1.853-.883.076.076 0 0 1-.007-.127c.126-.093.252-.19.372-.287a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.195.373.288a.076.076 0 0 1-.006.127 12.239 12.239 0 0 1-1.853.883.077.077 0 0 0-.041.107c.375.736.81 1.436 1.288 2.095a.077.077 0 0 0 .088.028 19.734 19.734 0 0 0 5.949-2.98.082.082 0 0 0 .032-.057c.5-5.177-.838-10.460-3.549-14.912a.062.062 0 0 0-.031-.028zM8.02 17.278c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"></path>
+                        </svg>
+                        JOIN DISCORD
+                    </a>
+                </div>
+                
+                <div class="server-details">
+                    <div class="detail-card">
+                        <div class="detail-title">Server IP</div>
+                        <div class="detail-value">92.62.251.128:27015</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-title">Map</div>
+                        <div class="detail-value">de_mirage</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-title">Starting Money</div>
+                        <div class="detail-value">$16,000</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            &copy; 2025 ☂️ resolver.hvh | All rights reserved
+        </footer>
     </div>
-
-    <!-- Copy to clipboard -->
+    
+    <div class="toast" id="toast">IP copied to clipboard!</div>
+    
     <script>
         function copyIP() {
-            navigator.clipboard.writeText("92.62.251.128:27015").then(() => {
-                alert("IP copied to clipboard!");
+            // IP сервера
+            const serverIP = '92.62.251.128:27015';
+            
+            // Копируем IP в буфер обмена
+            navigator.clipboard.writeText(serverIP).then(function() {
+                // Показываем уведомление
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                
+                // Скрываем уведомление через 3 секунды
+                setTimeout(function() {
+                    toast.classList.remove('show');
+                }, 3000);
+                
+                // Пытаемся открыть CS2 с подключением к серверу
+                try {
+                    window.location.href = `steam://connect/${serverIP}`;
+                } catch (e) {
+                    console.error('Failed to open Steam:', e);
+                }
+            }).catch(function(err) {
+                console.error('Failed to copy IP: ', err);
             });
         }
-    </script>
-
-    <!-- Particles.js background -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": {
-          "value": 70,
-          "density": { "enable": true, "value_area": 800 }
-        },
-        "color": { "value": "#ffffff" },
-        "shape": {
-          "type": "circle",
-          "stroke": { "width": 0, "color": "#000000" }
-        },
-        "opacity": {
-          "value": 0.3,
-          "random": true
-        },
-        "size": {
-          "value": 4,
-          "random": true
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.2,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 2,
-          "direction": "none",
-          "out_mode": "out"
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" }
-        },
-        "modes": {
-          "repulse": { "distance": 100, "duration": 0.4 },
-          "push": { "particles_nb": 4 }
-        }
-      },
-      "retina_detect": true
-    });
     </script>
 </body>
 </html>
