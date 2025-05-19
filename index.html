@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="☂️ resolver.hvh - лучший сервер CS2 в Европе и Украине. Только карта mirage, стартовые деньги $16K, множество уникальных привилегий!">
+    <meta name="keywords" content="cs2, counter-strike 2, hvh, сервер cs2, mirage, gaming, киберспорт">
     <title>☂️ resolver.hvh | EU/UA | Only mirage | $16K</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1705/1705545.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,6 +52,7 @@
             padding: 1rem;
             border-bottom: 2px solid var(--accent-color);
             width: 100%;
+            position: relative;
         }
         
         .logo {
@@ -63,6 +67,49 @@
             font-size: 1.2rem;
             color: var(--text-color);
             opacity: 0.8;
+        }
+        
+        .online-counter {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(10, 16, 28, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Навигация */
+        .nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(10, 16, 28, 0.7);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .nav-item {
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: var(--primary-color);
         }
         
         .server-info {
@@ -156,16 +203,6 @@
             font-weight: 600;
         }
         
-        footer {
-            margin-top: auto;
-            width: 100%;
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-color);
-            opacity: 0.7;
-        }
-        
         /* Анимации */
         @keyframes pulse {
             0% {
@@ -183,16 +220,19 @@
             animation: pulse 2s infinite;
         }
         
-        /* Стили для раздела привилегий */
-        .privileges-section {
+        /* Секция правил сервера */
+        .rules-section {
             margin-top: 3rem;
-            padding: 2rem 0;
+            padding: 2rem;
+            background: rgba(10, 16, 28, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
         
         .section-title {
             text-align: center;
             font-size: 2rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
             color: var(--text-color);
             position: relative;
             display: inline-block;
@@ -208,8 +248,130 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, var(--vip-color), var(--admin-color));
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
             border-radius: 3px;
+        }
+        
+        .rules-list {
+            list-style: none;
+            counter-reset: rule-counter;
+        }
+        
+        .rule-item {
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+        
+        .rule-item:before {
+            counter-increment: rule-counter;
+            content: counter(rule-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        /* Скриншоты и галерея */
+        .screenshots-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(10, 16, 28, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 16, 28, 0.7);
+            padding: 0.8rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* FAQ секция */
+        .faq-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(10, 16, 28, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(76, 201, 240, 0.1);
+            padding-bottom: 1rem;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0.5rem 0;
+        }
+        
+        .faq-answer {
+            margin-top: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent-color);
+            display: none;
+        }
+        
+        .faq-answer.show {
+            display: block;
+        }
+        
+        /* Стили для раздела привилегий */
+        .privileges-section {
+            margin-top: 3rem;
+            padding: 2rem 0;
         }
         
         .section-description {
@@ -386,9 +548,175 @@
             box-shadow: 0 6px 25px rgba(233, 69, 96, 0.4);
         }
         
+        /* Team section */
+        .team-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(10, 16, 28, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            background: rgba(19, 28, 48, 0.6);
+            border-radius: 10px;
+            padding: 1.5rem;
+            width: 250px;
+            text-align: center;
+            border: 1px solid rgba(76, 201, 240, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent-color);
+            padding: 0.3rem;
+        }
+        
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-role {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.1);
+            background: var(--secondary-color);
+        }
+        
+        /* Отзывы */
+        .testimonials-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(10, 16, 28, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: all 0.5s ease;
+            transform: translateX(100%);
+        }
+        
+        .testimonial-item.active {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .nav-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+        
+        /* Responsive styles */
         @media (max-width: 992px) {
             .privilege-features {
                 grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                flex-direction: column;
+            }
+            
+            .server-details {
+                flex-direction: column;
+            }
+            
+            .detail-card {
+                width: 100%;
+            }
+            
+            .online-counter {
+                position: static;
+                margin: 1rem auto;
+                display: inline-flex;
             }
         }
         
@@ -426,10 +754,23 @@
         <header>
             <div class="logo">☂️ resolver.hvh</div>
             <div class="tagline">EU/UA | Only mirage | $16K</div>
+            <div class="online-counter">
+                <span class="online-dot"></span>
+                <span id="online-count">0</span> онлайн
+            </div>
         </header>
         
+        <nav class="nav">
+            <a href="#server" class="nav-item active">Сервер</a>
+            <a href="#privileges" class="nav-item">Привилегии</a>
+            <a href="#screenshots" class="nav-item">Скриншоты</a>
+            <a href="#rules" class="nav-item">Правила</a>
+            <a href="#team" class="nav-item">Команда</a>
+            <a href="#faq" class="nav-item">FAQ</a>
+        </nav>
+        
         <main>
-            <div class="server-info">
+            <section id="server" class="server-info">
                 <div class="widget-container">
                     <!-- TSARVAR WIDGET -->
                     <a href="https://tsarvar.com/@resolver" data-tsarvarServerId="482989">Сервер ☂️ resolver.hvh | EU/UA | Only mirage | $16K</a>
@@ -476,11 +817,180 @@
                         <div class="detail-title">Starting Money</div>
                         <div class="detail-value">$16,000</div>
                     </div>
+                    <div class="detail-card">
+                        <div class="detail-title">Версия CS2</div>
+                        <div class="detail-value">Latest</div>
+                    </div>
                 </div>
-            </div>
+            </section>
+            
+            <!-- Скриншоты -->
+            <section id="screenshots" class="screenshots-section">
+                <h2 class="section-title">Сервер в действии</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="https://cdn.staticcrate.com/stock-hd/effects/gamescreen-cs2-map_mirage-1-fullsize.png" alt="CS2 Mirage Screenshot" class="gallery-img">
+                        <div class="gallery-caption">Mirage A Site</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://cdn.staticcrate.com/stock-hd/effects/gamescreen-cs2-map_mirage-2-fullsize.png" alt="CS2 Mirage Screenshot" class="gallery-img">
+                        <div class="gallery-caption">Mid Control</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://cdn.staticcrate.com/stock-hd/effects/gamescreen-cs2-map_mirage-3-fullsize.png" alt="CS2 Mirage Screenshot" class="gallery-img">
+                        <div class="gallery-caption">B Apartments</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://cdn.staticcrate.com/stock-hd/effects/gamescreen-cs2-map_mirage-4-fullsize.png" alt="CS2 Mirage Screenshot" class="gallery-img">
+                        <div class="gallery-caption">CT Spawn</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Правила сервера -->
+            <section id="rules" class="rules-section">
+                <h2 class="section-title">Правила сервера</h2>
+                <ul class="rules-list">
+                    <li class="rule-item">Запрещены оскорбления других игроков на почве расы, национальности, пола и религии.</li>
+                    <li class="rule-item">Запрещено использование читов и любых нечестных преимуществ.</li>
+                    <li class="rule-item">Запрещена реклама других серверов и ресурсов.</li>
+                    <li class="rule-item">Запрещено преднамеренное создание лагов на сервере.</li>
+                    <li class="rule-item">Администрация имеет право на блокировку игрока без предупреждения.</li>
+                    <li class="rule-item">Запрещено использование багов карты и игры в целях получения преимуществ.</li>
+                    <li class="rule-item">Запрещено обходить бан с помощью смены аккаунтов.</li>
+                </ul>
+            </section>
+            
+            <!-- Команда сервера -->
+            <section id="team" class="team-section">
+                <h2 class="section-title">Наша команда</h2>
+                <div class="team-members">
+                    <div class="team-member">
+                        <img src="https://api.dicebear.com/7.x/personas/svg?seed=owner" alt="Владелец" class="member-avatar">
+                        <h3 class="member-name">DarkShadow</h3>
+                        <div class="member-role">Владелец сервера</div>
+                        <p>Основатель и главный администратор. Поддерживает сервер с 2023 года.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 0 0 .497-3.753C20.18 7.773 21.692 5.25 22 4.009z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://api.dicebear.com/7.x/personas/svg?seed=admin1" alt="Администратор" class="member-avatar">
+                        <h3 class="member-name">NightRider</h3>
+                        <div class="member-role">Главный админ</div>
+                        <p>Следит за порядком на сервере и модерирует Discord.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://api.dicebear.com/7.x/personas/svg?seed=admin2" alt="Модератор" class="member-avatar">
+                        <h3 class="member-name">DeadlyAim</h3>
+                        <div class="member-role">Модератор</div>
+                        <p>Помогает новым игрокам освоиться на сервере.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Отзывы игроков -->
+            <section class="testimonials-section">
+                <h2 class="section-title">Отзывы игроков</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-item active">
+                        <p class="testimonial-text">"Лучший сервер de_mirage, который я когда-либо видел. Стабильный, без лагов, отличная атмосфера и комьюнити. Всем рекомендую!"</p>
+                        <div class="testimonial-author">- HeadHunter912</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <p class="testimonial-text">"VIP привилегии действительно стоят своих денег. Эффекты убийств и респавна выглядят потрясающе. Админы всегда на связи и помогают с любыми вопросами."</p>
+                        <div class="testimonial-author">- ShadowGamer</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <p class="testimonial-text">"Играю здесь уже 3 месяца и ни разу не пожалел. Отличный баланс между серьезной игрой и весельем. $16K на старте позволяет сразу взять хорошее оружие."</p>
+                        <div class="testimonial-author">- ProSniper</div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="nav-btn prev-btn">❮</button>
+                    <button class="nav-btn next-btn">❯</button>
+                </div>
+            </section>
+            
+            <!-- FAQ -->
+            <section id="faq" class="faq-section">
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Как подключиться к серверу?
+                        <span class="toggle-btn">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Нажмите кнопку "COPY IP & CONNECT" на сайте, это скопирует IP и автоматически запустит CS2 с подключением к нашему серверу. Альтернативно, вы можете вручную ввести IP 92.62.251.128:27015 в консоли игры с командой connect.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Какие карты есть на сервере?
+                        <span class="toggle-btn">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        На сервере играется только одна карта - de_mirage. Мы сосредоточены на обеспечении идеального игрового процесса именно на этой карте.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Что дают VIP и Admin привилегии?
+                        <span class="toggle-btn">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        VIP дает доступ к эффектам убийств, респавна, хитмаркеру, трейлам гранат, неоновому свечению и другим косметическим эффектам. Admin включает все возможности VIP плюс регенерацию здоровья и брони, а также доступ к панели администратора.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Как купить привилегии?
+                        <span class="toggle-btn">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Вы можете приобрести привилегии, связавшись с администрацией через Discord. Присоединитесь к нашему серверу Discord и создайте тикет в канале #create-ticket.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Могу ли я оплатить скинами CS2?
+                        <span class="toggle-btn">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Да, мы принимаем скины CS2 в качестве оплаты. Стоимость будет рассчитана в зависимости от рыночной цены скинов на момент оплаты.
+                    </div>
+                </div>
+            </section>
             
             <!-- Привилегии -->
-            <div class="privileges-section">
+            <section id="privileges" class="privileges-section">
                 <h2 class="section-title">Premium Privileges</h2>
                 <p class="section-description">Unlock exclusive features and dominate the server with style!</p>
                 
@@ -561,7 +1071,7 @@
                         <a href="https://discord.gg/5kwcXmvvyc" class="btn btn-privilege admin-btn">Get Admin Now</a>
                     </div>
                 </div>
-            </div>
+            </section>
         </main>
         
         <footer>
@@ -572,6 +1082,7 @@
     <div class="toast" id="toast">IP copied to clipboard!</div>
     
     <script>
+        // Функция для копирования IP
         function copyIP() {
             // IP сервера
             const serverIP = '92.62.251.128:27015';
@@ -597,6 +1108,84 @@
                 console.error('Failed to copy IP: ', err);
             });
         }
+        
+        // Обновление онлайн счетчика
+        function updateOnlineCount() {
+            // В реальном примере здесь будет запрос к API
+            // Для демонстрации используем случайное число
+            const count = Math.floor(Math.random() * 20) + 5;
+            document.getElementById('online-count').textContent = count;
+        }
+        
+        // Обработчик для FAQ
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggleBtn = question.querySelector('.toggle-btn');
+                
+                if (answer.classList.contains('show')) {
+                    answer.classList.remove('show');
+                    toggleBtn.textContent = '+';
+                } else {
+                    answer.classList.add('show');
+                    toggleBtn.textContent = '-';
+                }
+            });
+        });
+        
+        // Слайдер для отзывов
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-item');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        document.querySelector('.next-btn').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+        
+        document.querySelector('.prev-btn').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+        
+        // Автоматическое переключение слайдов
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+        
+        // Плавный скролл для навигации
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Удаляем активный класс у всех элементов
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.classList.remove('active');
+                });
+                
+                // Добавляем активный класс текущему элементу
+                this.classList.add('active');
+                
+                // Получаем id секции для скролла
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Инициализация
+        updateOnlineCount();
+        // Обновление онлайн счетчика каждые 30 секунд
+        setInterval(updateOnlineCount, 30000);
     </script>
 </body>
 </html>
