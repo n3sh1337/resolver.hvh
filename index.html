@@ -42,6 +42,33 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
+        .test-selector {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .test-selector button {
+            background: #5a67d8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .test-selector button:hover {
+            background: #4c51bf;
+            transform: translateY(-2px);
+        }
+
+        .test-selector button.active {
+            background: #e53e3e;
+            box-shadow: 0 4px 10px rgba(229, 62, 62, 0.3);
+        }
+
         .question {
             margin-bottom: 30px;
             padding: 25px;
@@ -51,9 +78,14 @@
             transition: all 0.3s ease;
         }
 
-        .question:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(90, 103, 216, 0.2);
+        .question.correct {
+            border-left-color: #48bb78;
+            background: #f0fff4;
+        }
+
+        .question.incorrect {
+            border-left-color: #e53e3e;
+            background: #fff5f5;
         }
 
         .question h3 {
@@ -77,9 +109,10 @@
             border: 2px solid #e2e8f0;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
         }
 
-        .option:hover {
+        .option:hover:not(.disabled) {
             background: #edf2f7;
             border-color: #5a67d8;
             transform: translateX(5px);
@@ -103,7 +136,43 @@
             border-color: #38b2ac;
         }
 
-        button {
+        .option.correct-answer {
+            background: #c6f6d5;
+            border-color: #48bb78;
+        }
+
+        .option.wrong-selected {
+            background: #fed7d7;
+            border-color: #e53e3e;
+        }
+
+        .option.disabled {
+            cursor: not-allowed;
+        }
+
+        .option.disabled input,
+        .option.disabled label {
+            cursor: not-allowed;
+        }
+
+        .correct-indicator {
+            position: absolute;
+            right: 10px;
+            font-size: 1.2em;
+            display: none;
+        }
+
+        .option.correct-answer .correct-indicator {
+            display: block;
+            color: #48bb78;
+        }
+
+        .option.wrong-selected .correct-indicator {
+            display: block;
+            color: #e53e3e;
+        }
+
+        button.submit {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
@@ -117,12 +186,12 @@
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
-        button:hover {
+        button.submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
 
-        button:active {
+        button.submit:active {
             transform: translateY(0);
         }
 
@@ -172,303 +241,364 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+
+        sup {
+            font-size: 0.8em;
+            vertical-align: super;
+        }
+
+        sub {
+            font-size: 0.8em;
+            vertical-align: sub;
+        }
+
+        .review-button {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            margin: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .review-button:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Písomná práca z matematiky</h1>
         
+        <div class="test-selector">
+            <button class="active" onclick="loadTest(1)">Test 1</button>
+            <button onclick="loadTest(2)">Test 2</button>
+            <button onclick="loadTest(3)">Test 3</button>
+        </div>
+        
         <form id="testForm">
-            <!-- Kvadratické funkcie a rovnice -->
-            <div class="question">
-                <span class="topic-badge">Kvadratické funkcie</span>
-                <h3>1. Nájdite korene rovnice: <span class="math">x² - 5x + 6 = 0</span></h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q1a" name="q1" value="a">
-                        <label for="q1a">a) x₁ = 1, x₂ = 6</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q1b" name="q1" value="b">
-                        <label for="q1b">b) x₁ = 2, x₂ = 3</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q1c" name="q1" value="c">
-                        <label for="q1c">c) x₁ = -2, x₂ = -3</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q1d" name="q1" value="d">
-                        <label for="q1d">d) x₁ = 0, x₂ = 5</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question">
-                <span class="topic-badge">Kvadratické funkcie</span>
-                <h3>2. Vrchol paraboly <span class="math">y = x² - 4x + 3</span> má súradnice:</h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q2a" name="q2" value="a">
-                        <label for="q2a">a) (2; -1)</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q2b" name="q2" value="b">
-                        <label for="q2b">b) (-2; 15)</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q2c" name="q2" value="c">
-                        <label for="q2c">c) (4; 3)</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q2d" name="q2" value="d">
-                        <label for="q2d">d) (0; 3)</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Lineárne lomené funkcie -->
-            <div class="question">
-                <span class="topic-badge">Lineárne lomené funkcie</span>
-                <h3>3. Nájdite definičný obor funkcie: <span class="math">f(x) = (2x + 1)/(x - 3)</span></h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q3a" name="q3" value="a">
-                        <label for="q3a">a) x ∈ ℝ</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q3b" name="q3" value="b">
-                        <label for="q3b">b) x ∈ ℝ \ {3}</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q3c" name="q3" value="c">
-                        <label for="q3c">c) x ∈ ℝ \ {-1/2}</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q3d" name="q3" value="d">
-                        <label for="q3d">d) x ∈ ℝ \ {0}</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question">
-                <span class="topic-badge">Lineárne lomené funkcie</span>
-                <h3>4. Horizontálna asymptota funkcie <span class="math">y = (3x + 2)/(x - 1)</span>:</h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q4a" name="q4" value="a">
-                        <label for="q4a">a) y = 0</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q4b" name="q4" value="b">
-                        <label for="q4b">b) y = 3</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q4c" name="q4" value="c">
-                        <label for="q4c">c) y = 2</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q4d" name="q4" value="d">
-                        <label for="q4d">d) y = -1</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mocninové funkcie -->
-            <div class="question">
-                <span class="topic-badge">Mocninové funkcie</span>
-                <h3>5. Vypočítajte: <span class="math">8^(2/3)</span></h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q5a" name="q5" value="a">
-                        <label for="q5a">a) 2</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q5b" name="q5" value="b">
-                        <label for="q5b">b) 4</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q5c" name="q5" value="c">
-                        <label for="q5c">c) 16</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q5d" name="q5" value="d">
-                        <label for="q5d">d) 512</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question">
-                <span class="topic-badge">Mocninové funkcie</span>
-                <h3>6. Ktorá z funkcií je klesajúca na intervale (0; +∞)?</h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q6a" name="q6" value="a">
-                        <label for="q6a">a) y = x²</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q6b" name="q6" value="b">
-                        <label for="q6b">b) y = x³</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q6c" name="q6" value="c">
-                        <label for="q6c">c) y = x^(-1)</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q6d" name="q6" value="d">
-                        <label for="q6d">d) y = x^(1/2)</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Exponenciálne funkcie -->
-            <div class="question">
-                <span class="topic-badge">Exponenciálne funkcie</span>
-                <h3>7. Vyriešte rovnicu: <span class="math">2^x = 32</span></h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q7a" name="q7" value="a">
-                        <label for="q7a">a) x = 3</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q7b" name="q7" value="b">
-                        <label for="q7b">b) x = 4</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q7c" name="q7" value="c">
-                        <label for="q7c">c) x = 5</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q7d" name="q7" value="d">
-                        <label for="q7d">d) x = 6</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question">
-                <span class="topic-badge">Exponenciálne funkcie</span>
-                <h3>8. Ktorá funkcia rastie na celom definičnom obore?</h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q8a" name="q8" value="a">
-                        <label for="q8a">a) y = (1/2)^x</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q8b" name="q8" value="b">
-                        <label for="q8b">b) y = 0.7^x</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q8c" name="q8" value="c">
-                        <label for="q8c">c) y = 3^x</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q8d" name="q8" value="d">
-                        <label for="q8d">d) y = (2/3)^x</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Logaritmické funkcie -->
-            <div class="question">
-                <span class="topic-badge">Logaritmické funkcie</span>
-                <h3>9. Vypočítajte: <span class="math">log₃ 27</span></h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q9a" name="q9" value="a">
-                        <label for="q9a">a) 2</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q9b" name="q9" value="b">
-                        <label for="q9b">b) 3</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q9c" name="q9" value="c">
-                        <label for="q9c">c) 4</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q9d" name="q9" value="d">
-                        <label for="q9d">d) 9</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question">
-                <span class="topic-badge">Logaritmické funkcie</span>
-                <h3>10. Definičný obor funkcie <span class="math">y = log₂(x - 3)</span>:</h3>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q10a" name="q10" value="a">
-                        <label for="q10a">a) x > 0</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q10b" name="q10" value="b">
-                        <label for="q10b">b) x > 3</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q10c" name="q10" value="c">
-                        <label for="q10c">c) x ≥ 3</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q10d" name="q10" value="d">
-                        <label for="q10d">d) x < 3</label>
-                    </div>
-                </div>
-            </div>
-
-            <button type="submit">Skontrolovať výsledky</button>
+            <div id="testContent"></div>
+            <button type="submit" class="submit">Skontrolovať výsledky</button>
         </form>
 
         <div id="result"></div>
     </div>
 
     <script>
-        // Správne odpovede
-        const correctAnswers = {
-            q1: 'b', // x₁ = 2, x₂ = 3
-            q2: 'a', // (2; -1)
-            q3: 'b', // x ∈ ℝ \ {3}
-            q4: 'b', // y = 3
-            q5: 'b', // 4
-            q6: 'c', // y = x^(-1)
-            q7: 'c', // x = 5
-            q8: 'c', // y = 3^x
-            q9: 'b', // 3
-            q10: 'b' // x > 3
+        let currentTest = 1;
+        let testSubmitted = false;
+
+        // Testy
+        const tests = {
+            1: {
+                questions: [
+                    {
+                        topic: "Kvadratické funkcie",
+                        question: "Nájdite korene rovnice: x² - 5x + 6 = 0",
+                        options: ["x₁ = 1, x₂ = 6", "x₁ = 2, x₂ = 3", "x₁ = -2, x₂ = -3", "x₁ = 0, x₂ = 5"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Kvadratické funkcie",
+                        question: "Vrchol paraboly y = x² - 4x + 3 má súradnice:",
+                        options: ["(2; -1)", "(-2; 15)", "(4; 3)", "(0; 3)"],
+                        correct: 0
+                    },
+                    {
+                        topic: "Lineárne lomené funkcie",
+                        question: "Nájdite definičný obor funkcie: f(x) = (2x + 1)/(x - 3)",
+                        options: ["x ∈ ℝ", "x ∈ ℝ \\ {3}", "x ∈ ℝ \\ {-1/2}", "x ∈ ℝ \\ {0}"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Lineárne lomené funkcie",
+                        question: "Horizontálna asymptota funkcie y = (3x + 2)/(x - 1):",
+                        options: ["y = 0", "y = 3", "y = 2", "y = -1"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Mocninové funkcie",
+                        question: "Vypočítajte: 8<sup>2/3</sup>",
+                        options: ["2", "4", "16", "512"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Mocninové funkcie",
+                        question: "Ktorá z funkcií je klesajúca na intervale (0; +∞)?",
+                        options: ["y = x²", "y = x³", "y = x<sup>-1</sup>", "y = x<sup>1/2</sup>"],
+                        correct: 2
+                    },
+                    {
+                        topic: "Exponenciálne funkcie",
+                        question: "Vyriešte rovnicu: 2<sup>x</sup> = 32",
+                        options: ["x = 3", "x = 4", "x = 5", "x = 6"],
+                        correct: 2
+                    },
+                    {
+                        topic: "Exponenciálne funkcie",
+                        question: "Ktorá funkcia rastie na celom definičnom obore?",
+                        options: ["y = (1/2)<sup>x</sup>", "y = 0.7<sup>x</sup>", "y = 3<sup>x</sup>", "y = (2/3)<sup>x</sup>"],
+                        correct: 2
+                    },
+                    {
+                        topic: "Logaritmické funkcie",
+                        question: "Vypočítajte: log₃ 27",
+                        options: ["2", "3", "4", "9"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Logaritmické funkcie",
+                        question: "Definičný obor funkcie y = log₂(x - 3):",
+                        options: ["x > 0", "x > 3", "x ≥ 3", "x < 3"],
+                        correct: 1
+                    }
+                ]
+            },
+            2: {
+                questions: [
+                    {
+                        topic: "Kvadratické funkcie",
+                        question: "Nájdite korene rovnice: x² + 7x + 12 = 0",
+                        options: ["x₁ = -3, x₂ = -4", "x₁ = 3, x₂ = 4", "x₁ = -2, x₂ = -6", "x₁ = 1, x₂ = 12"],
+                        correct: 0
+                    },
+                    {
+                        topic: "Kvadratické funkcie",
+                        question: "Pre akú hodnotu k má rovnica x² - 4x + k = 0 jeden dvojnásobný koreň?",
+                        options: ["k = 2", "k = 4", "k = 8", "k = 16"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Lineárne lomené funkcie",
+                        question: "Vertikálna asymptota funkcie y = (x + 5)/(2x - 6):",
+                        options: ["x = -5", "x = 6", "x = 3", "x = -3"],
+                        correct: 2
+                    },
+                    {
+                        topic: "Lineárne lomené funkcie",
+                        question: "Nájdite priesečník funkcie f(x) = (x + 1)/(x - 2) s osou y:",
+                        options: ["(0; -1/2)", "(0; 1/2)", "(0; -1)", "(0; 2)"],
+                        correct: 0
+                    },
+                    {
+                        topic: "Mocninové funkcie",
+                        question: "Vypočítajte: 27<sup>-2/3</sup>",
+                        options: ["1/3", "1/9", "1/27", "9"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Mocninové funkcie",
+                        question: "Ktorá funkcia je párna?",
+                        options: ["y = x³", "y = x<sup>4</sup>", "y = x<sup>5</sup>", "y = x<sup>1/3</sup>"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Exponenciálne funkcie",
+                        question: "Vyriešte rovnicu: 3<sup>2x-1</sup> = 27",
+                        options: ["x = 1", "x = 2", "x = 3", "x = 4"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Exponenciálne funkcie",
+                        question: "Pre ktorú hodnotu a je funkcia y = a<sup>x</sup> klesajúca?",
+                        options: ["a = 2", "a = e", "a = 0.5", "a = π"],
+                        correct: 2
+                    },
+                    {
+                        topic: "Logaritmické funkcie",
+                        question: "Vypočítajte: log₂ 64 + log₂ 1/4",
+                        options: ["2", "4", "6", "8"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Logaritmické funkcie",
+                        question: "Ak log x = 2, potom x =",
+                        options: ["2", "10", "20", "100"],
+                        correct: 3
+                    }
+                ]
+            },
+            3: {
+                questions: [
+                    {
+                        topic: "Kvadratické funkcie",
+                        question: "Parabola y = -2x² + 8x - 5 má maximum v bode:",
+                        options: ["(2; 3)", "(4; -5)", "(1; 1)", "(-2; -29)"],
+                        correct: 0
+                    },
+                    {
+                        topic: "Kvadratické funkcie",
+                        question: "Rovnica x² + px + 9 = 0 má korene x₁ = x₂. Hodnota p je:",
+                        options: ["±3", "±6", "±9", "±12"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Lineárne lomené funkcie",
+                        question: "Funkcia f(x) = (2x - 1)/(x + 3) má hodnotu 2 pre x =",
+                        options: ["x = -7", "x = 7", "x = -1", "x = 1"],
+                        correct: 0
+                    },
+                    {
+                        topic: "Lineárne lomené funkcie",
+                        question: "Inverzná funkcia k f(x) = (x + 2)/(x - 1) je:",
+                        options: ["f<sup>-1</sup>(x) = (x + 2)/(x - 1)", "f<sup>-1</sup>(x) = (x - 2)/(x + 1)", "f<sup>-1</sup>(x) = (2 - x)/(1 - x)", "f<sup>-1</sup>(x) = (x + 1)/(x - 2)"],
+                        correct: 0
+                    },
+                    {
+                        topic: "Mocninové funkcie",
+                        question: "Vyriešte rovnicu: x<sup>3/2</sup> = 8",
+                        options: ["x = 2", "x = 4", "x = 8", "x = 16"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Mocninové funkcie",
+                        question: "Zjednodušte: (x<sup>2/3</sup> · x<sup>1/2</sup>)<sup>6</sup>",
+                        options: ["x<sup>3</sup>", "x<sup>4</sup>", "x<sup>7</sup>", "x<sup>12</sup>"],
+                        correct: 2
+                    },
+                    {
+                        topic: "Exponenciálne funkcie",
+                        question: "Rovnica 4<sup>x</sup> - 2<sup>x+1</sup> - 8 = 0 má riešenie:",
+                        options: ["x = 1", "x = 2", "x = 3", "x = 4"],
+                        correct: 1
+                    },
+                    {
+                        topic: "Exponenciálne funkcie",
+                        question: "Ak 5<sup>x</sup> = 3<sup>x</sup>, potom x =",
+                        options: ["x = 0", "x = 1", "x = -1", "x = log₅3"],
+                        correct: 0
+                    },
+                    {
+                        topic: "Logaritmické funkcie",
+                        question: "Vyriešte: log₄(x² - 5x + 6) = 0",
+                        options: ["x = 2 alebo x = 3", "x = 5/2", "x = 1 alebo x = 6", "x = 0 alebo x = 5"],
+                        correct: 0
+                    },
+                    {
+                        topic: "Logaritmické funkcie",
+                        question: "Hodnota výrazu log₅125 - log₅5 je:",
+                        options: ["1", "2", "3", "4"],
+                        correct: 1
+                    }
+                ]
+            }
         };
 
-        // Pridávame interaktivitu k možnostiam
-        document.querySelectorAll('.option').forEach(option => {
-            option.addEventListener('click', function() {
-                // Nájdeme všetky možnosti v tejto otázke
-                const questionOptions = this.parentElement.querySelectorAll('.option');
-                
-                // Odstránime označenie zo všetkých možností
-                questionOptions.forEach(opt => opt.classList.remove('selected'));
-                
-                // Označíme vybranú možnosť
-                this.classList.add('selected');
-                
-                // Vyberieme radio tlačidlo
-                this.querySelector('input[type="radio"]').checked = true;
+        function renderTest(testNumber) {
+            const test = tests[testNumber];
+            const container = document.getElementById('testContent');
+            container.innerHTML = '';
+            
+            test.questions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <span class="topic-badge">${q.topic}</span>
+                    <h3>${index + 1}. ${q.question}</h3>
+                    <div class="options">
+                        ${q.options.map((option, optIndex) => `
+                            <div class="option">
+                                <input type="radio" id="q${index}${String.fromCharCode(97 + optIndex)}" 
+                                       name="q${index}" value="${optIndex}">
+                                <label for="q${index}${String.fromCharCode(97 + optIndex)}">
+                                    ${String.fromCharCode(97 + optIndex)}) ${option}
+                                </label>
+                                <span class="correct-indicator"></span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(questionDiv);
             });
-        });
+            
+            // Znovu pridáme event listeners
+            addOptionListeners();
+        }
+
+        function addOptionListeners() {
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    if (testSubmitted) return;
+                    
+                    const questionOptions = this.parentElement.querySelectorAll('.option');
+                    questionOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    this.querySelector('input[type="radio"]').checked = true;
+                });
+            });
+        }
+
+        function loadTest(testNumber) {
+            currentTest = testNumber;
+            testSubmitted = false;
+            
+            // Aktualizujeme aktívne tlačidlo
+            document.querySelectorAll('.test-selector button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Vyčistíme výsledky
+            document.getElementById('result').style.display = 'none';
+            
+            // Načítame nový test
+            renderTest(testNumber);
+            
+            // Resetujeme formulár
+            document.getElementById('testForm').reset();
+            
+            // Zobrazíme tlačidlo odoslať
+            document.querySelector('.submit').style.display = 'block';
+            document.querySelector('.submit').textContent = 'Skontrolovať výsledky';
+        }
 
         // Spracovanie odoslania formulára
         document.getElementById('testForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            let score = 0;
-            let totalQuestions = Object.keys(correctAnswers).length;
+            if (testSubmitted) return;
             
-            // Skontrolujeme odpovede
-            for (let question in correctAnswers) {
-                const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
-                if (selectedAnswer && selectedAnswer.value === correctAnswers[question]) {
-                    score++;
+            const test = tests[currentTest];
+            let score = 0;
+            
+            // Kontrola odpovedí a zobrazenie správnych/nesprávnych
+            test.questions.forEach((q, index) => {
+                const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
+                const questionDiv = document.querySelectorAll('.question')[index];
+                const options = questionDiv.querySelectorAll('.option');
+                
+                // Označíme správnu odpoveď
+                options[q.correct].classList.add('correct-answer');
+                options[q.correct].querySelector('.correct-indicator').innerHTML = '✓';
+                
+                if (selectedAnswer) {
+                    const selectedValue = parseInt(selectedAnswer.value);
+                    
+                    if (selectedValue === q.correct) {
+                        score++;
+                        questionDiv.classList.add('correct');
+                    } else {
+                        questionDiv.classList.add('incorrect');
+                        options[selectedValue].classList.add('wrong-selected');
+                        options[selectedValue].querySelector('.correct-indicator').innerHTML = '✗';
+                    }
+                } else {
+                    questionDiv.classList.add('incorrect');
                 }
-            }
+                
+                // Deaktivujeme možnosti
+                options.forEach(opt => {
+                    opt.classList.add('disabled');
+                    opt.querySelector('input').disabled = true;
+                });
+            });
             
             // Vypočítame percentá
-            const percentage = Math.round((score / totalQuestions) * 100);
+            const percentage = Math.round((score / test.questions.length) * 100);
             
             // Určíme známku
             let grade;
@@ -481,26 +611,31 @@
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = `
                 <h2>${grade}</h2>
-                <p>Váš výsledok: ${score} z ${totalQuestions} (${percentage}%)</p>
+                <p>Váš výsledok: ${score} z ${test.questions.length} (${percentage}%)</p>
                 <p>Správnych odpovedí: ${score}</p>
+                <p>Nesprávnych odpovedí: ${test.questions.length - score}</p>
+                <button class="review-button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    Pozrieť odpovede
+                </button>
+                <button class="review-button" onclick="loadTest(${currentTest})">
+                    Skúsiť znova
+                </button>
             `;
             resultDiv.style.display = 'block';
             
             // Posunieme sa k výsledkom
             resultDiv.scrollIntoView({ behavior: 'smooth' });
             
-            // Pridáme animáciu
-            setTimeout(() => {
-                resultDiv.style.animation = 'none';
-                void resultDiv.offsetWidth; // Reštart animácie
-                resultDiv.style.animation = 'slideIn 0.5s ease-out';
-            }, 10);
+            // Označíme test ako odoslaný
+            testSubmitted = true;
+            
+            // Zmeníme text tlačidla
+            document.querySelector('.submit').textContent = 'Test už bol vyhodnotený';
+            document.querySelector('.submit').style.display = 'none';
         });
 
-        // Pridáme nápovedy pri prejdení myšou
-        document.querySelectorAll('.topic-badge').forEach(badge => {
-            badge.title = 'Téma otázky';
-        });
+        // Načítame prvý test pri načítaní stránky
+        renderTest(1);
     </script>
 </body>
 </html>
